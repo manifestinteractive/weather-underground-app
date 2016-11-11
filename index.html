@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
+
+    <!-- Mobile Specific Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather">
+
+    <!-- Twitter META Info -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@mrmidi">
+    <meta name="twitter:domain" content="peterschmalfeldt.com">
+    <meta name="twitter:creator" content="@mrmidi">
+
+    <!-- Open Graph protocol -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Weather">
+    <meta property="og:url" content="http://peterschmalfeldt.com/">
+    <meta property="og:image" content="http://peterschmalfeldt.com/images/me.jpg">
+    <meta property="og:site_name" content="Weather">
+    <meta property="og:description" content="Get US Weather">
+
+    <!-- Dublin Core Metadata -->
+    <meta name="dc:language" content="en_US">
+    <meta name="dc:title" content="Weather">
+    <meta name="dc:source" content="http://peterschmalfeldt.com/">
+    <meta name="dc:description" content="Get US Weather">
+
+    <!-- Icons -->
+    <link href="img/favicon.png" rel="shortcut icon">
+    <link rel="apple-touch-icon-precomposed" href="img/apple/icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple/icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple/icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple/icon-144x144.png" />
+</head>
+<body>
+    <div class="weather-section weather-input">
+        <h1 class="header">Weather Forecast</h1>
+        <div class="input-wrapper">
+            <input type="text" id="zipcode" name="zipcode" placeholder="Enter Zipcode" maxlength="5" pattern="[0-9]{0,5}" required />
+        </div>
+        <div class="error-message"></div>
+    </div>
+
+    <div class="weather-section weather-forecast">
+        <h1 class="header">Weather Forecast</h1>
+        <div class="results-wrapper">
+            <div class="day day-1"></div>
+            <div class="day day-2"></div>
+            <div class="day day-3"></div>
+            <div class="day day-4"></div>
+        </div>
+        <div class="back-button"><a href="#">Change Zipcode</a</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/site.js"></script>
+</body>
+</html>

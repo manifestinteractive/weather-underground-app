@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+}
+
+html.winter {
+    background: url('../img/bg-winter.jpg') top left no-repeat;
+    background-size: cover;
+}
+
+html.spring {
+    background: url('../img/bg-spring.jpg') top left no-repeat;
+    background-size: cover;
+}
+
+html.summer {
+    background: url('../img/bg-summer.jpg') top left no-repeat;
+    background-size: cover;
+}
+
+html.fall {
+    background: url('../img/bg-fall.jpg') top left no-repeat;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.weather-section {
+    height: 100vh;
+    display: block;
+}
+.weather-input .header {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    vertical-align: bottom;
+    margin-top: calc(50vh - 75px);
+}
+.weather-input .input-wrapper {
+    display:block;
+    width: 75%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+.weather-input .input-wrapper input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    color: #333;
+}
+.weather-input .input-wrapper input:focus {
+    outline: none;
+}
+.weather-input .error-message {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    color: darkred;
+    display: none;
+}
+
+
+.weather-section {
+    display: none;
+}
+
+.weather-forecast .header {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    vertical-align: bottom;
+    margin-top: calc(50vh - 100px);
+}
+
+.weather-forecast .results-wrapper {
+    display:block;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    height: 125px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.weather-forecast .results-wrapper .day {
+    width: 25%;
+    display: inline-block;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.day img {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: 0 auto;
+}
+.day .weather-date {
+    color: #999;
+    font-weight: 300;
+    margin-top: 20px;
+    font-size: 12px;
+}
+.day .weather-details {
+    color: #333;
+    font-weight: 400;
+    font-size: 12px;
+}
+.back-button {
+    text-align: center;
+    text-decoration: none;
+}
+.back-button a {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    color: #333;
+    opacity: 0.5;
+    text-decoration: none;
+}
+.back-button a:hover {
+    opacity: 1;
+}
+
+html.winter .header, html.fall .header {
+    color: #333;
+}
+
+html.spring .header {
+    color: #111;
+}
+
+html.summer .header {
+    color: #DDD;
+}
+
+html.winter .back-button a, html.spring .back-button a, html.fall .back-button a {
+    color: #333;
+}
+
+html.spring .back-button a, html.summer .back-button a {
+    color: #FFF;
+    opacity: 0.75;
+}
+
+html.winter .error-message {
+    color: #E91E63;
+}
+
+html.spring .error-message {
+    color: #de4040;
+}
+
+html.summer .error-message {
+    color: #FFEB3B;
+}
+
+html.fall .error-message {
+    color: #FF5722;
+}
+
+html.winter ::-webkit-input-placeholder {
+    color: #176fb5;
+    transition: color 0.25s ease-out;
+}
+html.winter ::-moz-placeholder {
+    color: #176fb5;
+    transition: color 0.25s ease-out;
+}
+html.winter :-ms-input-placeholder {
+    color: #176fb5;
+    transition: color 0.25s ease-out;
+}
+html.winter :-moz-placeholder {
+    color: #176fb5;
+    transition: color 0.25s ease-out;
+}
+
+html.spring ::-webkit-input-placeholder {
+    color: #218c26;
+    transition: color 0.25s ease-out;
+}
+html.spring ::-moz-placeholder {
+    color: #218c26;
+    transition: color 0.25s ease-out;
+}
+html.spring :-ms-input-placeholder {
+    color: #218c26;
+    transition: color 0.25s ease-out;
+}
+html.spring :-moz-placeholder {
+    color: #218c26;
+    transition: color 0.25s ease-out;
+}
+
+html.summer ::-webkit-input-placeholder {
+    color: #FF5722;
+    transition: color 0.25s ease-out;
+}
+html.summer ::-moz-placeholder {
+    color: #FF5722;
+    transition: color 0.25s ease-out;
+}
+html.summer :-ms-input-placeholder {
+    color: #FF5722;
+    transition: color 0.25s ease-out;
+}
+html.summer :-moz-placeholder {
+    color: #FF5722;
+    transition: color 0.25s ease-out;
+}
+
+html.fall ::-webkit-input-placeholder {
+    color: orangered;
+    transition: color 0.25s ease-out;
+}
+html.fall ::-moz-placeholder {
+    color: orangered;
+    transition: color 0.25s ease-out;
+}
+html.fall :-ms-input-placeholder {
+    color: orangered;
+    transition: color 0.25s ease-out;
+}
+html.fall :-moz-placeholder {
+    color: orangered;
+    transition: color 0.25s ease-out;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent !important;
+}
+input:focus::-moz-placeholder {
+    color: transparent !important;
+}
+input:focus:-ms-input-placeholder {
+    color: transparent !important;
+}
+input:focus:-moz-placeholder {
+    color: transparent !important;
+}
