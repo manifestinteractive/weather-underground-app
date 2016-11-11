@@ -15,8 +15,10 @@ summary, time, mark, audio, video {
     font-style: normal;
 }
 
-html {
-    height: 100vh;
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 html.winter {
@@ -78,6 +80,8 @@ body {
     font-weight: 300;
     color: #333;
     font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 .weather-input .input-wrapper input:focus {
     outline: none;

@@ -77,9 +77,12 @@
       $('.day-' + ( i + 1)).html(date + image + weather);
     }
 
+    $('#zipcode').blur();
     $('.weather-forecast .header').text(zipcode + ' Forecast');
     $('.weather-input').fadeOut(500);
     $('.weather-forecast').fadeIn(500);
+
+    window.scrollTo(0, 0);
   }
 
   /**
