@@ -37,7 +37,10 @@
    * @param zipcode
    */
   function getWeather (zipcode) {
+    window.scrollTo(0, 0);
+
     $('.weather-input .error-message').fadeOut();
+    $('#zipcode').blur();
 
     dataLoaded = false;
     fetchingWeather = true;
@@ -109,12 +112,9 @@
       $('.day-' + ( i + 1)).html(date + image + weather);
     }
 
-    $('#zipcode').blur();
     $('.weather-forecast .header').text(zipcode + ' Forecast');
     $('.weather-loading').fadeOut(500);
     $('.weather-forecast').fadeIn(500);
-
-    window.scrollTo(0, 0);
 
     dataLoaded = true;
   }
