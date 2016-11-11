@@ -7,6 +7,15 @@ A quick Weather Underground App I put together.  This App uses my [Weather Under
 
 ![example-small](https://cloud.githubusercontent.com/assets/508411/20203888/04d9e57c-a799-11e6-9879-b93dbc834bb5.gif)
 
+
+App Features
+---
+
+* Uses Seasonal Backgrounds
+* Remembers Previously Entered Zipcode
+* Ability to Change Zipcode
+
+
 Using the App
 ---
 
