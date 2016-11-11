@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
 big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
@@ -12,6 +12,7 @@ summary, time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
     box-sizing: border-box;
+    font-style: normal;
 }
 
 html {
@@ -39,7 +40,7 @@ html.fall {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 .weather-section {
     height: 100vh;
@@ -76,6 +77,7 @@ body {
     font-size: 20px;
     font-weight: 300;
     color: #333;
+    font-family: 'Ubuntu', sans-serif;
 }
 .weather-input .input-wrapper input:focus {
     outline: none;
@@ -104,6 +106,7 @@ body {
     white-space: nowrap;
     vertical-align: bottom;
     margin-top: calc(50vh - 100px);
+    font-style: normal;
 }
 
 .weather-forecast .results-wrapper {
