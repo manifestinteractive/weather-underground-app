@@ -11,8 +11,10 @@ A quick Weather Underground App I put together.  This App uses my [Weather Under
 App Features
 ---
 
-* Uses Seasonal Backgrounds
-* Remembers Previously Entered Zipcode
+* Mobile Friendly
+* Easy to Use
+* Seasonal Backgrounds
+* Remembers Zipcode
 * Ability to Change Zipcode
 
 
