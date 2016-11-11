@@ -20,11 +20,16 @@
    */
   var fetchingWeather = false;
 
+  var dataLoaded = false;
+
   /**
    * Fetch Weather for provided Zipcode
    * @param zipcode
    */
   function getWeather (zipcode) {
+    $('.weather-loading').fadeIn(100);
+    $('.weather-input').fadeOut(100);
+
     $('.weather-input .error-message').fadeOut();
 
     fetchingWeather = true;
@@ -41,8 +46,14 @@
 
     $.ajax({
       url: weatherUrl,
+      cache: true,
+      timeout: 5000,
       jsonp: 'callback',
       dataType: 'jsonp',
+      error: function (jqXHR, textStatus, errorThrown) {
+        reset();
+        showError(errorThrown);
+      },
       success: function( data ) {
         fetchingWeather = false;
         if (data.response.error) {
@@ -79,10 +90,12 @@
 
     $('#zipcode').blur();
     $('.weather-forecast .header').text(zipcode + ' Forecast');
-    $('.weather-input').fadeOut(500);
+    $('.weather-loading').fadeOut(500);
     $('.weather-forecast').fadeIn(500);
 
     window.scrollTo(0, 0);
+
+    dataLoaded = true;
   }
 
   /**
@@ -107,9 +120,10 @@
    * Initialize Interface
    * @param message - Whether to focus input
    */
-  function init (focus) {
+  function reset (focus) {
     fetchingWeather = false;
     $('#zipcode').val('');
+    $('.weather-loading').hide();
     $('.weather-input').fadeIn(500);
     $('.weather-forecast').fadeOut(500);
     $('.weather-input .error-message').text('').hide();
@@ -157,7 +171,7 @@
     });
 
     elmBackButton.on('click', function(e) {
-      init(true);
+      reset(true);
       e.preventDefault();
     });
 
@@ -166,10 +180,10 @@
       if (API_KEY !== '' && zipcode) {
         getWeather(zipcode);
       } else {
-        init();
+        reset();
       }
     } else {
-      init();
+      reset();
     }
   });
 })();
