@@ -20,18 +20,26 @@
    */
   var fetchingWeather = false;
 
+  /**
+   * Track if data was returned
+   * @type {boolean}
+   */
   var dataLoaded = false;
+
+  /**
+   * Timeout Interval to Reset UI
+   * @type {null}
+   */
+  var fetch = null;
 
   /**
    * Fetch Weather for provided Zipcode
    * @param zipcode
    */
   function getWeather (zipcode) {
-    $('.weather-loading').fadeIn(100);
-    $('.weather-input').fadeOut(100);
-
     $('.weather-input .error-message').fadeOut();
 
+    dataLoaded = false;
     fetchingWeather = true;
 
     if (!/[0-9]{5}/.test(zipcode)) {
@@ -42,7 +50,18 @@
       return false;
     }
 
+    $('.weather-loading').fadeIn(100);
+    $('.weather-input').fadeOut(100);
+
     var weatherUrl = 'https://api.wunderground.com/api/' + API_KEY + '/forecast/q/zmw:' + zipcode + '.1.99999.json';
+
+    clearTimeout(fetch);
+    fetch = setTimeout(function () {
+      if (!dataLoaded) {
+        reset();
+        showError('Unable to Fetch Weather');
+      }
+    }, 5100);
 
     $.ajax({
       url: weatherUrl,
@@ -51,10 +70,12 @@
       jsonp: 'callback',
       dataType: 'jsonp',
       error: function (jqXHR, textStatus, errorThrown) {
+        fetchingWeather = false;
         reset();
         showError(errorThrown);
       },
       success: function( data ) {
+        dataLoaded = true;
         fetchingWeather = false;
         if (data.response.error) {
           showError(data.response.error.description);
