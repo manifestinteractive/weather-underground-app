@@ -206,7 +206,11 @@
     elmZipcode.on('keyup', function() {
       var zipcode = $(this).val();
       if (!fetchingWeather && zipcode && zipcode.length === 5) {
-        getWeather(zipcode);
+
+        clearTimeout(fetch);
+        fetch = setTimeout(function () {
+          getWeather(zipcode);
+        }, 250);
       }
     });
 
