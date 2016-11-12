@@ -56,6 +56,16 @@
     $('.weather-loading').fadeIn(100);
     $('.weather-input').fadeOut(100);
 
+    var weather_data = localStorage.getItem('weather_data');
+    var weather_time = localStorage.getItem('weather_time');
+    var current_time = Date.now();
+    var cache_expire = (3 * 60 * 60 * 1000); // expires after 3 hours
+
+    if (weather_data && weather_time && (current_time - weather_time) < cache_expire) {
+      buildForecast(zipcode, JSON.parse(weather_data));
+      return false;
+    }
+
     var weatherUrl = 'https://api.wunderground.com/api/' + API_KEY + '/forecast/q/zmw:' + zipcode + '.1.99999.json';
 
     clearTimeout(fetch);
@@ -64,12 +74,12 @@
         reset();
         showError('Unable to Fetch Weather');
       }
-    }, 5100);
+    }, 3100);
 
     $.ajax({
       url: weatherUrl,
       cache: true,
-      timeout: 5000,
+      timeout: 3000,
       jsonp: 'callback',
       dataType: 'jsonp',
       error: function (jqXHR, textStatus, errorThrown) {
@@ -84,6 +94,10 @@
           showError(data.response.error.description);
         } else if (typeof data.forecast !== 'undefined' && typeof data.forecast.simpleforecast !== 'undefined') {
           buildForecast(zipcode, data.forecast.simpleforecast.forecastday);
+          if (typeof(Storage) !== 'undefined') {
+            localStorage.setItem('weather_data', JSON.stringify(data.forecast.simpleforecast.forecastday));
+            localStorage.setItem('weather_time', Date.now());
+          }
         } else {
           showError('An Unknown Error Occurred');
         }
@@ -107,7 +121,7 @@
       var high = (WEATHER_UNIT == 'F') ? forecast[i].high.fahrenheit : forecast[i].high.celsius;
       var low = (WEATHER_UNIT == 'F') ? forecast[i].low.fahrenheit : forecast[i].low.celsius;
 
-      var weather = '<div class="weather-details">' + low + '&deg; / ' + high + '&deg;</div>';
+      var weather = '<div class="weather-details">' + high + '&deg; <span>|</span> ' + low + '&deg;</div>';
 
       $('.day-' + ( i + 1)).html(date + image + weather);
     }
@@ -149,7 +163,12 @@
     $('.weather-forecast').fadeOut(500);
     $('.weather-input .error-message').text('').hide();
 
-    localStorage.removeItem('zipcode');
+
+    if (typeof(Storage) !== 'undefined') {
+      localStorage.removeItem('zipcode');
+      localStorage.removeItem('weather_data');
+      localStorage.removeItem('weather_time');
+    }
 
     if (focus) {
       $('#zipcode').focus();

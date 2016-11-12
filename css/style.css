@@ -171,6 +171,9 @@ body {
     font-weight: 400;
     font-size: 12px;
 }
+.day .weather-details span {
+    color: #CCC;
+}
 .back-button {
     text-align: center;
     text-decoration: none;
